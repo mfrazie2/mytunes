@@ -4,11 +4,18 @@ var SongQueue = Songs.extend({
   initialize: function(){
     this.on('add', function() {
       console.log('SongQueue.add');
-  });
+    });
+    this.on('remove', function() {
+      console.log("SQ.remove");
+    });
+    
+    
     // ;
     // ;this.add(song)
   },
-  // this.playFirst = "";
+  playFirst : function(){
+    return this.models[0];
+  }
   // },
   // // when add event occurs, song is added to SongQueue collection
   
