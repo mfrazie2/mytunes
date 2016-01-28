@@ -2,9 +2,16 @@
 var SongQueue = Songs.extend({
 
   initialize: function(){
+    this.on('add', function() {
+      console.log('SongQueue.add');
+  });
+    // ;
+    // ;this.add(song)
+  },
+  // this.playFirst = "";
+  // },
+  // // when add event occurs, song is added to SongQueue collection
   
-  this.playFirst = "";
-  }
+  //console.log()
   
-
 });
