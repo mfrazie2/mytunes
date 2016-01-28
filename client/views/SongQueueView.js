@@ -6,6 +6,7 @@ var SongQueueView = Backbone.View.extend({
     this.render();
     // listen for an add event, then render the section
     this.collection.on('add', function() {this.render();}, this);
+    // listen for a remove event, then render the section
     this.collection.on('remove', function() {this.render();}, this);
     
   },
