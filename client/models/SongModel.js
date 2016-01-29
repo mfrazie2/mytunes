@@ -1,10 +1,6 @@
 // SongModel.js - Defines a backbone model class for songs.
 var SongModel = Backbone.Model.extend({
     
-    
-  defaults: {
-    
-  },
   
   play: function(){
     // Triggering an event here will also trigger the event on the collection
@@ -13,17 +9,16 @@ var SongModel = Backbone.Model.extend({
   
   enqueue: function(){
     this.trigger('enqueue', this);
-    console.log('song.enqueue');
   },
 
   dequeue: function(){
-    console.log("I'm dequeuing");
     this.trigger('dequeue', this);
   },
   
   ended: function(){
-    console.log("I'm done!");
     this.trigger('ended', this);
   },
+  
+
   
 });

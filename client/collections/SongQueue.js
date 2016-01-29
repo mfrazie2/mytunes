@@ -4,7 +4,6 @@ var SongQueue = Songs.extend({
   initialize: function(){
     this.on('add', this.enqueue, this);
     this.on('remove', function() {
-      console.log("SQ.remove");
     });
     this.on('ended', this.playNext, this);
     // hears an 'ended'
@@ -32,9 +31,14 @@ var SongQueue = Songs.extend({
     if(this.length >= 1) {
       this.playFirst();
     }
-    // stop?
+    else {
+      this.stop();
+    }
   },
   
+  stop: function(){
+    this.trigger('stop', this);
+  },
   // },
   // // when add event occurs, song is added to SongQueue collection
   

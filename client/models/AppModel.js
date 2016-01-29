@@ -25,10 +25,10 @@ var AppModel = Backbone.Model.extend({
       this.get('songQueue').remove(song);
     }, this);
     
-    // this.get('songQueue').on('ended', function(song){
-    //   this.get('songQueue').playNext();
-    // }, this);
-    
+    this.get('songQueue').on('stop', function(){
+      this.set('currentSong', '');
+    }, this);
+  
   }
-
+    
 });
