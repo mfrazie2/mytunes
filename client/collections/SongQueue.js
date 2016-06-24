@@ -1,47 +1,34 @@
 // SongQueue.js - Defines a backbone model class for the song queue.
 var SongQueue = Songs.extend({
-
-  initialize: function(){
+  initialize: function (){
     this.on('add', this.enqueue, this);
-    this.on('remove', function() {
-    });
+    this.on('dequeue', this.dequeue, this);
     this.on('ended', this.playNext, this);
-    // hears an 'ended'
-      // play next
-    
-    
-    // ;
-    // ;this.add(song)
   },
-  
-  dequeue: function() {},
-  
+  dequeue: function (song) {
+    if (this.at(0) === song) {
+      this.playNext();
+    } else {
+      this.remove(song);
+    }
+  },
   enqueue: function (song) {
-    if(this.length === 1) {
+    if (this.length === 1) {
       this.playFirst();
     }
   },
-  
-  playFirst: function(){
-    return this.at(0).play();
+  playFirst: function (){
+    this.at(0).play();
   },
-  
-  playNext: function() {
+  playNext: function () {
     this.shift();
-    if(this.length >= 1) {
+    if (this.length >= 1) {
       this.playFirst();
-    }
-    else {
+    } else {
       this.stop();
     }
   },
-  
   stop: function(){
     this.trigger('stop', this);
-  },
-  // },
-  // // when add event occurs, song is added to SongQueue collection
-  
-  //console.log()
-  
+  }
 });
